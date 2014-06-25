@@ -1,0 +1,20 @@
+#include "widgetlist.h"
+
+#include <QtGui/QHBoxLayout>
+
+widgetList::widgetList(QWidget *parent) :
+    QWidget(parent)
+{
+    this->setGeometry(100,100,200,200);
+    label = new QLabel(this);
+    label->setFixedWidth(70);
+
+    Qlist = new QWidgetList;
+
+    QHBoxLayout *HLayoutBox = new QHBoxLayout(this);
+    HLayoutBox->addWidget(label);
+    HLayoutBox->addWidget(Qlist);
+
+    chooseButton = new QPushButton(tr("choose"),this);
+    chooseButton->setFixedSize(40,30);
+}

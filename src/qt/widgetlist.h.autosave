@@ -1,0 +1,21 @@
+#ifndef WIDGETLIST_H
+#define WIDGETLIST_H
+
+#include <QWidget>
+#include <QtGui/qpushbutton.h>
+#include <QtGui/qlabel.h>
+
+class QWidgetList;
+
+class widgetList : public QWidget
+{
+    Q_OBJECT
+public:
+    explicit widgetList(QWidget *parent = 0);
+private:
+    QLabel      *label;
+    QPushButton *chooseButton;
+    QWidgetList *Qlist;
+};
+
+#endif // WIDGETLIST_H
