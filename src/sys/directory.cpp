@@ -13,7 +13,7 @@ bool csg::isDir(const char* dir)
     return false;
 }
 
-int pwd(string& path)
+int csg::pwd(string& path)
 {
     char buffer[1024];
     if(getcwd(buffer,sizeof(buffer)) == NULL){
@@ -25,11 +25,11 @@ int pwd(string& path)
     return 0;
 }
 
-int currentDirectoryName(string& directoryName)
+int csg::currentDirectoryName(string& directoryName)
 {
     string path;
 
-    pwd(path);
+    csg::pwd(path);
     basic_string<char>::size_type pos = path.find_last_of("/");
 
     directoryName.resize(path.size()-pos);
@@ -38,12 +38,12 @@ int currentDirectoryName(string& directoryName)
     return 0;
 }
 
-void cd(const string& path)
+void csg::cd(const string& path)
 {
     chdir(path.c_str());
 }
 
-int getFiles(const string path,csg::strVec& fileName)
+int getFiles(const string& path,vector<string>& fileName)
 {
     DIR    *dir;
     struct dirent *entry;
@@ -54,7 +54,7 @@ int getFiles(const string path,csg::strVec& fileName)
         return -1;
     }
 
-    cd(path);
+    csg::cd(path);
 
     while((entry = readdir(dir)) != NULL){
         lstat(entry->d_name,&stateBuf);
@@ -70,12 +70,12 @@ int getFiles(const string path,csg::strVec& fileName)
         lstat(entry->d_name,&stateBuf);
         if(entry->d_name[0] != '.'&&!S_ISDIR(stateBuf.st_mode)){
             string p="";
-            pwd(p);
+            csg::pwd(p);
             fileName.push_back(p+'/'+string(entry->d_name));
         }
     }
 
-    cd("..");
+    csg::cd("..");
     closedir(dir);
 
     return 0;
