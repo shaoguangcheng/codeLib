@@ -35,36 +35,6 @@ void testQuene()
 
 int main()
 {
-//    testQuene();
-//    point p;
-//    vector<point> v;
-//    for(int i=0;i<10;i++)
-//        for(int j=0;j<10;j++){
-//            p.x = i;
-//            p.y = j;
-//            v.push_back(p);
-//        }
-
-//    list<point> l(v);
-
-//    p.x = 9;
-//    p.y = 9;
-//    int pos = l.search(p);
-//    l.print();
-//    l.writeDataToFile("coor.txt");
-
-//    std::cout << l.size() <<std::endl;
-//    std::cout << pos <<std::endl;
-
-    binaryTree<char> *tree = new binaryTree<char> ('#');
-    tree->createBinTree(cin,tree->getRoot());if(tree->getRoot() == NULL)cout << "yes" << endl;
-    tree->traverse(tree->getRoot(),cout);
-
-    if(tree->parent('f') != NULL)
-        cout << tree->parent('c')->value;
-    else
-        cout << "not found" << endl;
-    tree->depth();
 
     return 0;
 }
