@@ -1,5 +1,17 @@
 #include "directory.h"
 
+bool csg::isFileExist(const char* filename)
+{
+	if(filename == NULL)
+		return false;
+	
+	struct stat statBuf;
+	lstat(filename, &statBuf);
+	int ret = S_ISREG(statBuf.st_mode);
+
+	return bool(ret);
+}
+
 bool csg::isDir(const char* dir)
 {
     if(dir == NULL)
@@ -8,9 +20,8 @@ bool csg::isDir(const char* dir)
     struct stat statBuf;
     lstat(dir,&statBuf);
     int ret = S_ISDIR(statBuf.st_mode);
-    if(ret == 1) return true;
-
-    return false;
+    
+	return bool(ret);
 }
 
 int csg::pwd(string& path)

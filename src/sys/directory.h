@@ -15,6 +15,8 @@ using namespace std;
 namespace csg {
     typedef vector<string> strVec;
 
+	bool isFileExist(const char* filename);
+
 /**
      * @brief isDir test if dir is a directory
      * @param dir
